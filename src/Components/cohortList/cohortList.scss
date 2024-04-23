@@ -1,0 +1,17 @@
+.cohort-list {
+  padding: 20px 20px;
+  // overflow: scroll;
+
+  &__title {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  &__item {
+    border-bottom: 2px solid #559268;
+    padding: 15px 5px 5px 10px;
+    font-weight: bold;
+    // margin-right: 30px;
+    margin-left: 10px;
+  }
+}

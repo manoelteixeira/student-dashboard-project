@@ -1,0 +1,29 @@
+.student {
+  display: grid;
+  place-items: center;
+  justify-items: center;
+  grid-template-columns: auto 1fr;
+  padding: 20px 10px;
+  margin: 10px;
+  border: 2px solid #559268;
+
+  &__photo {
+    width: 50%;
+    border-radius: 1em;
+  }
+
+  &__info {
+    place-self: center;
+    justify-self: start;
+
+    &-name {
+      font-weight: bold;
+    }
+
+    &-dob {
+      span {
+        color: #559268;
+      }
+    }
+  }
+}

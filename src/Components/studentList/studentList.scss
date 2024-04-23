@@ -1,0 +1,14 @@
+.student-list {
+  padding: 20px 20px;
+  //   overflow-y: scroll;
+
+  //   height: 90%;
+  &__title {
+  }
+
+  &__total {
+    span {
+      color: #559268;
+    }
+  }
+}

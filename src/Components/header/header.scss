@@ -1,0 +1,10 @@
+.header {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: #559268;
+
+  &__text {
+    color: #ededed;
+  }
+}
