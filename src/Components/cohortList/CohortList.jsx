@@ -1,9 +1,15 @@
 // src/Components/cohortList/CohortList.jsx
+import { useState } from "react";
+import { getCohorotList } from "../../helperFunctions";
 import "./cohortList.scss";
 
-export default function CohortList({ classList, method }) {
+export default function CohortList({ setSelectedClass }) {
+  const [classList, setClassList] = useState([
+    "All Students",
+    ...getCohorotList(),
+  ]);
   const selectCohort = (cohort) => {
-    method(cohort);
+    setSelectedClass(cohort);
   };
 
   const cohortList = classList.map((cohort, idx) => {

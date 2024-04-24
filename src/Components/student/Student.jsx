@@ -1,8 +1,9 @@
 // src/Components/students/Student.jsx
+import { getStudentProfile } from "../../helperFunctions";
 import "./student.scss";
 
 export default function Student({ student }) {
-  const { name, username, birthday, profilePhoto } = student;
+  const { name, username, birthday, profilePhoto } = getStudentProfile(student);
   return (
     <div className="student">
       <img src={profilePhoto} alt={name} className="student__photo" />

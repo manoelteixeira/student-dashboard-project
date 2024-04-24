@@ -1,9 +1,9 @@
+import data from "./data/data.json";
+
 /**
- *
- * @param {*} data
  * @returns
  */
-export function getCohorotList(data) {
+export function getCohorotList() {
   let cohortList = [];
   for (const student of data) {
     let { cohort } = student;
@@ -40,11 +40,10 @@ export function getCohorotList(data) {
 
 /**
  *
- * @param {*} data
  * @param {*} selectedCohort
  * @returns
  */
-export function getStudentsByCohort(data, selectedCohort) {
+export function getStudentsByCohort(selectedCohort) {
   if (selectedCohort == "All Students") {
     return data;
   }
@@ -79,7 +78,9 @@ export function getStudentProfile(student) {
     "November",
     "December",
   ];
-  const { names, username, dob, profilePhoto } = student;
+  const { names, username, dob, profilePhoto, certifications } = student;
+  const { resume, linkedin, github, mockInterview } = certifications;
+
   const name = `${names.preferredName} ${names.middleName[0]}. ${names.surname}`;
   const [month, day, year] = dob.split("/");
   const birthday = `${months[month - 1]} ${day}, ${year}`;

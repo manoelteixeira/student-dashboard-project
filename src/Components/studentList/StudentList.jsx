@@ -8,7 +8,7 @@ import "./studentList.scss";
 
 export default function StudentList({ selectedClass, data }) {
   const students = data.map((student, idx) => {
-    return <Student key={idx} student={getStudentProfile(student)} />;
+    return <Student key={idx} student={student} />;
   });
 
   return (
