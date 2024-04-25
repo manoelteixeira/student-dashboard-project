@@ -1,8 +1,10 @@
 import data from "./data/data.json";
-
 /**
+ *
+ * @param {*} data
  * @returns
  */
+// export function getCohorotList(data) {
 export function getCohorotList() {
   let cohortList = [];
   for (const student of data) {
@@ -79,11 +81,138 @@ export function getStudentProfile(student) {
     "December",
   ];
   const { names, username, dob, profilePhoto, certifications } = student;
-  const { resume, linkedin, github, mockInterview } = certifications;
 
   const name = `${names.preferredName} ${names.middleName[0]}. ${names.surname}`;
   const [month, day, year] = dob.split("/");
   const birthday = `${months[month - 1]} ${day}, ${year}`;
 
-  return { name, username, birthday, profilePhoto };
+  const graduationStatus = isOnTrack(student);
+  const onTrack = {
+    status: graduationStatus,
+    message: `${graduationStatus ? "On" : "Off"} Track to Graduate`,
+  };
+
+  return { name, username, birthday, profilePhoto, onTrack };
 }
+
+/**
+ * Check if student is on track to graduate.
+ * @param {Object} student
+ * @returns {Boolean}
+ */
+export function isOnTrack(student) {
+  const { resume, linkedin, github, mockInterview } = student.certifications;
+  const certificationsStatus = resume && linkedin && github && mockInterview;
+  const codewarsStatus = student.codewars.current.total > 600;
+  return certificationsStatus && codewarsStatus;
+}
+
+export function getStudentDetails(student) {
+  const { codewars, certifications, cohort } = student;
+  // Codewars
+  const codeWarsTotal = codewars.current.total;
+  const codeWarsLastWeek = codewars.current.lastWeek;
+  const codeWarsGoal = codewars.goal.total;
+  const codeWarsPercentage = `${
+    (codeWarsGoal / codeWarsTotal).toFixed(2) * 100
+  }%`;
+
+  const codeWarsStatus = [
+    {
+      label: "Current Total",
+      value: codeWarsTotal,
+    },
+    {
+      label: "Last Week",
+      value: codeWarsLastWeek,
+    },
+    {
+      label: "Goal",
+      value: codeWarsGoal,
+    },
+    {
+      label: "Percentage of Goal Achieved",
+      value: codeWarsPercentage,
+    },
+  ];
+
+  // Scores
+  const scoresStaus = [
+    {
+      label: "Assignments",
+      value: `${cohort.scores.assignments * 100}%`,
+    },
+    {
+      label: "Projects",
+      value: `${cohort.scores.projects * 100}%`,
+    },
+    {
+      label: "Assessments",
+      value: `${cohort.scores.assessments * 100}%`,
+    },
+  ];
+  // Certifications
+  const certificationsStatus = [
+    {
+      label: "Resume",
+      value: certifications.resume ? "✅" : "❌",
+    },
+    {
+      label: "LinkedIn",
+      value: certifications.linkedin ? "✅" : "❌",
+    },
+    {
+      label: "GitHub",
+      value: certifications.github ? "✅" : "❌",
+    },
+    {
+      label: "Mock Interview",
+      value: certifications.mockInterview ? "✅" : "❌",
+    },
+  ];
+
+  return {
+    codewars: codeWarsStatus,
+    certifications: certificationsStatus,
+    scores: scoresStaus,
+  };
+}
+
+// export function getStudentDetails(student) {
+//   const { codewars, certifications, cohort } = student;
+//   // Codewars
+//   const codeWarsTotal = codewars.current.total;
+//   const codeWarsLastWeek = codewars.current.lastWeek;
+//   const codeWarsGoal = codewars.goal.total;
+//   const codeWarsPercentage = `${
+//     (codeWarsGoal / codeWarsTotal).toFixed(2) * 100
+//   }%`;
+
+//   const codeWarsStatus = {
+//     total: codeWarsTotal,
+//     lastWeek: codeWarsLastWeek,
+//     goal: codeWarsGoal,
+//     pecentage: codeWarsPercentage,
+//   };
+
+//   // Scores
+//   const scores = {
+//     assignments: `${cohort.scores.assignments * 100}%`,
+//     projects: `${cohort.scores.projects * 100}%`,
+//     assessments: `${cohort.scores.assessments * 100}%`,
+//   };
+
+//   // Certifications
+//   const certificationsStatus = {
+//     resume: certifications.resume ? "✅" : "❌",
+//     linkedin: certifications.linkedin ? "✅" : "❌",
+//     github: certifications.github ? "✅" : "❌",
+//     mockInterview: certifications.mockInterview ? "✅" : "❌",
+//   };
+
+//   return {
+//     codewars: codeWarsStatus,
+//     certifications: certifications,
+//     scores: scores,
+//   };
+// }

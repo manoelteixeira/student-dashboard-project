@@ -2,17 +2,26 @@
   display: grid;
   place-items: center;
   justify-items: center;
-  grid-template-columns: auto 1fr;
+  // grid-template-columns: auto auto auto;
+  grid-template-columns: auto 5fr 1fr;
+  grid-template:
+    "photo info status"
+    "details details details";
   padding: 20px 10px;
   margin: 10px;
   border: 2px solid #559268;
 
   &__photo {
-    width: 50%;
+    place-self: center;
+    grid-area: photo;
+    width: 100px;
     border-radius: 1em;
   }
 
   &__info {
+    grid-area: info;
+    display: grid;
+    grid-template-columns: 1fr;
     place-self: center;
     justify-self: start;
 
@@ -25,5 +34,15 @@
         color: #559268;
       }
     }
+
+    &-more {
+      margin-top: 10px;
+      color: #559268;
+    }
+  }
+
+  &__ontrack {
+    grid-area: status;
+    color: #559268;
   }
 }
