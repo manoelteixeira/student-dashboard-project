@@ -1,3 +1,5 @@
+@import "../../palette";
+
 .student-details-item {
   display: grid;
   grid-template-columns: 1fr;
@@ -10,7 +12,7 @@
   &__field {
     padding-top: 5px;
     span {
-      color: #559268;
+      color: $primary-color;
     }
   }
 }

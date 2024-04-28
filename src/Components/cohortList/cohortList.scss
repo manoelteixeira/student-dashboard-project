@@ -1,4 +1,7 @@
+@import "../../palette";
+
 .cohort-list {
+  height: 100%;
   padding: 20px 20px;
   // overflow: scroll;
 
@@ -8,14 +11,18 @@
   }
 
   &__item {
-    border-bottom: 2px solid #559268;
+    border-bottom: 2px solid $primary-color;
     padding: 15px 5px 5px 10px;
     font-weight: bold;
-    // margin-right: 30px;
     margin-left: 10px;
+
+    &:hover {
+      color: $primary-color;
+      scale: 1.05;
+    }
   }
 }
 
 .selected {
-  color: #559268;
+  color: $primary-color;
 }

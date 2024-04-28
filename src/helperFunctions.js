@@ -1,11 +1,4 @@
-import data from "./data/data.json";
-/**
- *
- * @param {*} data
- * @returns
- */
-// export function getCohorotList(data) {
-export function getCohorotList() {
+export function getCohorotList(data) {
   let cohortList = [];
   for (const student of data) {
     let { cohort } = student;
@@ -40,12 +33,7 @@ export function getCohorotList() {
   );
 }
 
-/**
- *
- * @param {*} selectedCohort
- * @returns
- */
-export function getStudentsByCohort(selectedCohort) {
+export function getStudentsByCohort(data, selectedCohort) {
   if (selectedCohort == "All Students") {
     return data;
   }
@@ -60,11 +48,6 @@ export function getStudentsByCohort(selectedCohort) {
   return students;
 }
 
-/**
- *
- * @param {*} student
- * @returns
- */
 export function getStudentProfile(student) {
   const months = [
     "January",
@@ -95,11 +78,6 @@ export function getStudentProfile(student) {
   return { name, username, birthday, profilePhoto, onTrack };
 }
 
-/**
- * Check if student is on track to graduate.
- * @param {Object} student
- * @returns {Boolean}
- */
 export function isOnTrack(student) {
   const { resume, linkedin, github, mockInterview } = student.certifications;
   const certificationsStatus = resume && linkedin && github && mockInterview;
@@ -178,41 +156,6 @@ export function getStudentDetails(student) {
   };
 }
 
-// export function getStudentDetails(student) {
-//   const { codewars, certifications, cohort } = student;
-//   // Codewars
-//   const codeWarsTotal = codewars.current.total;
-//   const codeWarsLastWeek = codewars.current.lastWeek;
-//   const codeWarsGoal = codewars.goal.total;
-//   const codeWarsPercentage = `${
-//     (codeWarsGoal / codeWarsTotal).toFixed(2) * 100
-//   }%`;
-
-//   const codeWarsStatus = {
-//     total: codeWarsTotal,
-//     lastWeek: codeWarsLastWeek,
-//     goal: codeWarsGoal,
-//     pecentage: codeWarsPercentage,
-//   };
-
-//   // Scores
-//   const scores = {
-//     assignments: `${cohort.scores.assignments * 100}%`,
-//     projects: `${cohort.scores.projects * 100}%`,
-//     assessments: `${cohort.scores.assessments * 100}%`,
-//   };
-
-//   // Certifications
-//   const certificationsStatus = {
-//     resume: certifications.resume ? "✅" : "❌",
-//     linkedin: certifications.linkedin ? "✅" : "❌",
-//     github: certifications.github ? "✅" : "❌",
-//     mockInterview: certifications.mockInterview ? "✅" : "❌",
-//   };
-
-//   return {
-//     codewars: codeWarsStatus,
-//     certifications: certifications,
-//     scores: scores,
-//   };
-// }
+export function updateStudent(data, id, student) {
+  console.log(id);
+}

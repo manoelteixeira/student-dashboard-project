@@ -1,11 +1,14 @@
 // src/Components/students/Student.jsx
 import { useState } from "react";
 import { getStudentProfile } from "../../helperFunctions";
-import StudentDetails from "./StudentDetails";
+import StudentDetails from "../studentDetails/StudentDetails";
+import StudentDetailsNote from "../studentNote/StudentNote";
 import "./student.scss";
 
 export default function Student({ student }) {
   const [showMore, setShowMore] = useState(false);
+  const [notes, setNotes] = useState([...student.notes]);
+
   const [detailsContent, setDetailContent] = useState("");
   const { name, username, birthday, profilePhoto, onTrack } =
     getStudentProfile(student);
@@ -22,9 +25,20 @@ export default function Student({ student }) {
     }
   };
 
+  const showMoreDiv = () => {
+    return (
+      <>
+        <StudentDetails student={student} />
+        <StudentDetailsNote notes={notes} setNotes={setNotes} />
+      </>
+    );
+  };
+
   const handleShowMore = () => {
     setShowMore(!showMore);
   };
+
+  const updateNote = (note) => {};
 
   return (
     <div className="student">
@@ -40,7 +54,7 @@ export default function Student({ student }) {
         </a>
       </div>
       {onTrackDiv()}
-      {showMore && <StudentDetails student={student} />}
+      {showMore && showMoreDiv()}
     </div>
   );
 }

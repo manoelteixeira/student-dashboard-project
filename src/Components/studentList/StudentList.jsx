@@ -6,7 +6,7 @@ import Student from "../student/Student";
 
 import "./studentList.scss";
 
-export default function StudentList({ selectedClass, data }) {
+export default function StudentList({ selectedClass, data, setStudents }) {
   const students = data.map((student, idx) => {
     return <Student key={idx} student={student} />;
   });

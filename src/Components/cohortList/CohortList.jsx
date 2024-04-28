@@ -3,11 +3,7 @@ import { useState } from "react";
 import { getCohorotList } from "../../helperFunctions";
 import "./cohortList.scss";
 
-export default function CohortList({ setSelectedClass }) {
-  const [classList, setClassList] = useState([
-    "All Students",
-    ...getCohorotList(),
-  ]);
+export default function CohortList({ classList, setSelectedClass }) {
   const selectCohort = (cohort) => {
     setSelectedClass(cohort);
   };

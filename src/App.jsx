@@ -1,23 +1,35 @@
 import { useState } from "react";
-import { getCohorotList, getStudentsByCohort } from "./helperFunctions";
+import {
+  getCohorotList,
+  getStudentsByCohort,
+  updateStudent,
+} from "./helperFunctions";
 
 import Header from "./Components/header/Header";
 import CohortList from "./Components/cohortList/CohortList";
 import StudentList from "./Components/studentList/StudentList";
 
-// import data from "./data/data.json";
+import data from "./data/data.json";
 import "./app.scss";
 
 export default function App() {
   const [selectedClass, setSelectedClass] = useState("All Students");
+  const [students, setStudents] = useState(data);
+
   return (
     <>
       <Header />
       <div className="main">
-        <CohortList setSelectedClass={setSelectedClass} />
+        <CohortList
+          setSelectedClass={setSelectedClass}
+          classList={getCohorotList(data)}
+        />
         <StudentList
           selectedClass={selectedClass}
-          data={getStudentsByCohort(selectedClass)}
+          data={getStudentsByCohort(data, selectedClass)}
+          setStudents={() => {
+            setStudents;
+          }}
         />
       </div>
     </>

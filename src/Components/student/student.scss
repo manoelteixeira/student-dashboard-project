@@ -1,15 +1,22 @@
+@import "../../palette";
+
 .student {
+  width: 90%;
   display: grid;
   place-items: center;
   justify-items: center;
-  // grid-template-columns: auto auto auto;
   grid-template-columns: auto 5fr 1fr;
   grid-template:
     "photo info status"
     "details details details";
   padding: 20px 10px;
   margin: 10px;
-  border: 2px solid #559268;
+  border: 2px solid $primary-color;
+  border-radius: 5px;
+
+  // &:hover {
+  //   scale: 1.01;
+  // }
 
   &__photo {
     place-self: center;
@@ -31,18 +38,18 @@
 
     &-dob {
       span {
-        color: #559268;
+        color: $primary-color;
       }
     }
 
     &-more {
       margin-top: 10px;
-      color: #559268;
+      color: $primary-color;
     }
   }
 
   &__ontrack {
     grid-area: status;
-    color: #559268;
+    color: $primary-color;
   }
 }
