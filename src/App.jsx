@@ -22,7 +22,7 @@ export default function App() {
       <div className="main">
         <CohortList
           setSelectedClass={setSelectedClass}
-          classList={getCohorotList(data)}
+          classList={["All Students", ...getCohorotList(data)]}
         />
         <StudentList
           selectedClass={selectedClass}

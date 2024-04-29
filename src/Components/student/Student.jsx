@@ -9,7 +9,7 @@ export default function Student({ student }) {
   const [showMore, setShowMore] = useState(false);
   const [notes, setNotes] = useState([...student.notes]);
 
-  const [detailsContent, setDetailContent] = useState("");
+  // const [detailsContent, setDetailContent] = useState("");
   const { name, username, birthday, profilePhoto, onTrack } =
     getStudentProfile(student);
 
