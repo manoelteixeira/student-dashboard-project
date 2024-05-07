@@ -1,37 +1,41 @@
+@import "../../../styles/colors";
+
 .student-list__info {
   display: grid;
   grid-template-columns: 0.3fr 1fr 1fr;
   gap: 2%;
   margin-bottom: 2%;
-}
-.student-list__img {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.student-list__img img {
-  width: 100px;
-  height: 100px;
-}
-.student-list__details {
-  padding-top: 20px;
-}
-.student-list__details > * {
-  margin-top: 5px;
-}
-.student-list__details button {
-  margin-top: 2%;
-  color: #45865f;
-  background-color: transparent;
-  border: none;
-}
-.student-list__ontrack {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #45865f;
-  font-weight: bold;
+  &__img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    width: 125px;
+    border-radius: 20px;
+  }
+
+  &__details {
+    padding-top: 20px;
+  }
+  &__details > * {
+    margin-top: 5px;
+  }
+  button {
+    margin-top: 2%;
+    color: $primary;
+    background-color: transparent;
+    border: none;
+  }
+  &__details &__ontrack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $primary;
+    font-weight: bold;
+  }
 }

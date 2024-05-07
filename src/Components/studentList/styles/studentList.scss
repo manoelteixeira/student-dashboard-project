@@ -5,7 +5,6 @@
 .student-list {
   grid-area: student-list;
   background-color: white;
-  //   border: black solid 2px;
   padding: 20px;
 
   h3 {
@@ -19,12 +18,12 @@
   }
   &__item {
     margin-top: 5%;
-  }
 
-  &__item li {
-    border: 3px solid $primary;
-    border-radius: 10px;
-    padding: 30px;
-    margin-top: 2%;
+    li {
+      border: 3px solid $primary;
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 2%;
+    }
   }
 }
