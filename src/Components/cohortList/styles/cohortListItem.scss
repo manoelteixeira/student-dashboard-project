@@ -1,0 +1,12 @@
+@import "../../../styles/colors";
+
+.cohort-list__item {
+  padding: 10px;
+  font-weight: bold;
+  color: black;
+  border-bottom: 3px solid $primary;
+
+  &:hover {
+    color: $primary;
+  }
+}

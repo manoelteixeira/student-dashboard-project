@@ -1,23 +1,44 @@
-// src/Components/studentList/StudentList.jsx
+/* eslint-disable react/prop-types */
+// src/components/StudentList/StudentList.jsx
+import StudentListItem from "./StudentListItem";
+import { getStudentsByCohort } from "../../utils/studentHelpers";
+import "./styles/studentList.scss";
 import { useState } from "react";
-import { getStudentProfile } from "../../helperFunctions";
 
-import Student from "../student/Student";
+export default function StudentList({ data, setStudents, selectedCohort }) {
+  const students = getStudentsByCohort(data, selectedCohort);
+  const [currentStutent, setCurrentStudent] = useState();
 
-import "./studentList.scss";
-
-export default function StudentList({ selectedClass, data, setStudents }) {
-  const students = data.map((student, idx) => {
-    return <Student key={idx} student={student} />;
-  });
+  const updateStudent = () => {
+    const updatedData = data.map((student) => {
+      if (student.id == currentStutent.id) {
+        return { ...currentStutent };
+      } else {
+        return { ...student };
+      }
+    });
+    setStudents([...updatedData]);
+  };
 
   return (
     <main className="student-list">
-      <h2 className="student-list__title">{selectedClass}</h2>
-      <p className="student-list__total">
-        Total Students: <span>{data.length}</span>
+      <h3> {selectedCohort}</h3>
+      <p>
+        Total Students: <span>{students.length}</span>
       </p>
-      {students}
+      <ul className="student-list__item">
+        {students.map((student) => {
+          return (
+            <li key={student.id}>
+              <StudentListItem
+                student={student}
+                setCurrentStudent={setCurrentStudent}
+                updateStudent={updateStudent}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </main>
   );
 }

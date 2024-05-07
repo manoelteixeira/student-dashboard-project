@@ -1,39 +1,24 @@
+// src/App.jsx
+
 import { useState } from "react";
-import {
-  getCohorotList,
-  getStudentsByCohort,
-  updateStudent,
-} from "./helperFunctions";
-
-import Header from "./Components/header/Header";
-import CohortList from "./Components/cohortList/CohortList";
-import StudentList from "./Components/studentList/StudentList";
-
+import Navbar from "./components/Navbar/Navbar";
+import CohortList from "./components/CohortList/CohortList";
+import StudentList from "./components/StudentList/StudentList";
+import "./styles/app.scss";
 import data from "./data/data.json";
-import "./app.scss";
 
 export default function App() {
-  const [selectedClass, setSelectedClass] = useState("All Students");
-  const [students, setStudents] = useState(data);
-
+  const [students, setStudents] = useState([...data]);
+  const [selectedCohort, setSelectedCohort] = useState("All Students");
   return (
-    <>
-      <Header />
-      <div className="main">
-        <CohortList
-          setSelectedClass={setSelectedClass}
-          classList={["All Students", ...getCohorotList(data)]}
-        />
-        <StudentList
-          selectedClass={selectedClass}
-          data={getStudentsByCohort(data, selectedClass)}
-          setStudents={() => {
-            setStudents;
-          }}
-        />
-      </div>
-    </>
+    <div className="app">
+      <Navbar />
+      <CohortList data={students} setSelectedCohort={setSelectedCohort} />
+      <StudentList
+        data={students}
+        setStudents={setStudents}
+        selectedCohort={selectedCohort}
+      />
+    </div>
   );
 }
-
-// export default App;

@@ -1,0 +1,14 @@
+// src/components/CohortList/cohortList.scss
+
+.cohort-list {
+  grid-area: cohort-list;
+  background-color: white;
+  //   border: 3px solid black;
+  padding: 20px;
+
+  &__header {
+    text-align: center;
+    // font-size: 24px;
+    padding-bottom: 20px;
+  }
+}

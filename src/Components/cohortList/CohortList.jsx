@@ -1,31 +1,26 @@
-// src/Components/cohortList/CohortList.jsx
-import { useState } from "react";
-import { getCohorotList } from "../../helperFunctions";
-import "./cohortList.scss";
+// src/components/CohortList/CohortList.jsx
+/* eslint-disable react/prop-types */
+import CohortListItem from "./CohortListItem";
+import { getCohortListSorted } from "../../utils/cohortHelpers";
+import "./styles/cohortList.scss";
 
-export default function CohortList({ classList, setSelectedClass }) {
+export default function CohortList({ data, setSelectedCohort }) {
+  const items = ["All Students", ...getCohortListSorted(data)];
+
   const selectCohort = (cohort) => {
-    setSelectedClass(cohort);
+    setSelectedCohort(cohort);
   };
-
-  const cohortList = classList.map((cohort, idx) => {
-    return (
-      <div
-        key={idx}
-        className="cohort-list__item"
-        onClick={() => {
-          selectCohort(cohort);
-        }}
-      >
-        {cohort}
-      </div>
-    );
-  });
 
   return (
     <aside className="cohort-list">
-      <h2 className="cohort-list__title">Choose a Class by Start Date</h2>
-      {cohortList}
+      <h3 className="cohort-list__header"> Choose a Class by Start Date</h3>
+      {items.map((item, idx) => (
+        <CohortListItem
+          key={`cohort-list-item-${idx}`}
+          selectCohort={() => selectCohort(item)}
+          item={item}
+        />
+      ))}
     </aside>
   );
 }

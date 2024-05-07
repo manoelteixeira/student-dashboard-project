@@ -1,0 +1,25 @@
+// src/app.scss
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html,
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    "navbar navbar"
+    "cohort-list student-list";
+}

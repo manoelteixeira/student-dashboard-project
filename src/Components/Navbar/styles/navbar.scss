@@ -1,0 +1,14 @@
+// src/components/Navbar/navbar.scss
+
+@import "../../../styles/colors";
+
+.navbar {
+  grid-area: navbar;
+  height: 100px;
+  text-align: center;
+  align-content: center;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: $primary;
+}

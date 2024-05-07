@@ -1,0 +1,12 @@
+.student-list__portfolio {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.student-list__scores > *,
+.student-list__codewars > *,
+.student-list__certifications > * {
+  margin-top: 10px;
+}
+span {
+  color: #45865f;
+}
